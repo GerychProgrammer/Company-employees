@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company</title>
+    <link rel="shortcut icon" href="../img/enterprise.png">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://kit.fontawesome.com/80d467d9a0.js" crossorigin="anonymous"></script>
+</head>
+<body>   
+    <div class="leftSection">        
+        <div class="inputs">
+            <h1>Company name</h1>
+            <h2 class="inputs__heading">Введите данные</h2>
+                <div class="inputs__empoyeesInf">
+                    <span>Введите фамилию:<input id="inputs__spanSurname" type="text" placeholder="Фамилия" class="inputs__spanSurname" name="surname" autocomplete="off"></span>
+                    <span>Введите имя:<input id="inputs__spanName" type="text" placeholder="Имя" class="inputs__spanName" name="name" autocomplete="off"></span>
+                    <span>Введите отчество:<input id="inputs__spanPatronymic" type="text" placeholder="Отчество" class="inputs__spanPatronymic" name="patronymic" autocomplete="off"></span>
+                    <span>Введите дату рождения:<input id="inputs__spanAge" type="date" placeholder="Дата рождения" class="inputs__spanAge" name="age" autocomplete="off"></span>  
+                </div>
+    
+                <div class="inputs__sex">
+                    <span>Пол:</span>
+                    <span>мужской<input id="inputs__male" type="radio" name="sex" class="inputs__male" name="sexMale"></span>
+                    <span>женский<input id="inputs__female" type="radio" name="sex" class="inputs__female" name="sexFemale"></span>    
+                </div>
+
+                <span class="inputs__spanAvailabilityHE">Наличие высшего образования <input id="inputs__spanAvailabilityHE" type="checkbox" name="highEducation"></span>
+               
+                <div class="inputs__Btns">
+                    <button id="confirm" class="inputs__confirmBtn inputs__confirmBtn_marginRight" name="confirm">Добавить</button>
+                    <button id="reset" class="inputs__resetBtn" name="reset">Сбросить</button>
+                    <button id="clearAll" class="inputs__clearBtn" name="clear">Удалить всех работников</button>
+                </div>
+        </div>        
+
+        <div class="filterAndSort">
+            <div class="filterAndSort__filters">
+                <h2 class="filterAndSort__heading">Фильтрация</h2>
+                <div class="filterAndSort__someFilter">
+                    <span>Показать</span>
+                    <select name="show" id="">
+                        <option value="">Всех</option>
+                        <option value="">Работающих в данный момент</option>
+                        <option value="">Уволенных</option>
+                    </select>
+                </div>
+
+                <div class="filterAndSort__someFilter">
+                    <span>Возраст</span>
+                    <select name="Age" id="">
+                        <option value="">Все возрасты</option>
+                        <option value="">До 25</option>
+                        <option value="">От 25 до 45</option>
+                        <option value="">От 45</option>
+                    </select>
+                </div>
+                
+                <div class="filterAndSort__someFilter">
+                    <span>Наличие высшего образования</span>
+                    <select name="" id="">
+                        <option value="">Есть</option>
+                        <option value="">Нет</option>
+                    </select>
+                </div>
+
+                <div class="filterAndSort__someFilter">
+                    <span>Пол</span>
+                    <select name="" id="">
+                        <option value="">Мужской</option>
+                        <option value="">Женский</option>
+                    </select>
+                </div>
+            </div>
+            <div class="filterAndSort__sort">
+                <h2 class="filterAndSort__heading">Сортировка</h2>
+                <span>Отсортировать по:</span>
+                <select name="Sort" id="">
+                    <option value="">От А до Я</option>
+                    <option value="">От Я до А</option>
+                    <option value="">По возрастанию даты приема на работу</option>
+                    <option value="">По убыванию даты приема на работу</option>
+                    <option value="">По возрастанию даты увольнения</option>
+                    <option value="">По убыванию даты увольнения</option>
+                </select>
+            </div> 
+        </div>
+        
+    </div>
+
+    <div id="rightSection" class="rightSection">
+        <!-- <div id="rightSection__listOfEmployees" class="rightSection__listOfEmployees">
+            <h2 class="rightSection__noEmployees">Компания без сотрудников</h2>
+        </div>  -->
+
+        <!-- <div id="rightSection__listOfEmployees" class="rightSection__listOfEmployees">
+            <ol id="rightSection__employeeList" class="rightSection__employeeList">
+                <li class="rightSection__employeeName"><span class="rightSection__employeeDefaultText rightSection__employeeDefaultText_italic">Имя Фамилия Отчество</span></li>
+                <li class="rightSection__employeeSex"><span class="rightSection__employeeDefaultText">Пол: </span>Мужсой Женсий</li>
+                <li class="rightSection__employeeEducation"><span class="rightSection__employeeDefaultText">Высшее образвание : </span>да, нет</li>
+                <li class="rightSection__employeeStartWorkDate"><span class="rightSection__employeeDefaultText">Дата приема на работу </span></li>
+                <button id="rightSection__employeeDel" class="rightSection__employeeDel"><i class="fa-solid fa-trash-can"></i></button>
+            </ol>
+            <div id="rightSection__joinAndLeave" class="rightSection__joinAndLeave">
+                <span><i class="fa-solid fa-check fa-lg"></i>Дата приема на работу:</span>
+                <span><i class="fa-solid fa-xmark fa-lg"></i>Дата увольнения:</span>
+            </div>
+        </div> -->
+    </div>    
+</body>
+<script src="./js/helpers.js"></script>
+<script src="./js/storage.js"></script>
+<script src="./js/template.js"></script>
+<script src="./js/view.js"></script>
+<script src="./js/model.js"></script>
+<script src="./js/controller.js"></script>
+<script src="./js/app.js"></script>
+
+<!-- <script src="js/model.js"></script> -->
+</html>

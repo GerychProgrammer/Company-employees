@@ -1,0 +1,14 @@
+{
+  "name": "company-employees",
+  "version": "1.0.0",
+  "description": "For 2 Block Exercise",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "2.7.1"
+  }
+}
