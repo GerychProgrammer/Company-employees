@@ -1,50 +1,66 @@
 (function (window) {
 	class controller {
 		constructor(model, view) {
-			self = this;
-			self.model = model;
-			self.view = view;
+			this.model = model;
+			this.view = view;
 
-			self.view.bind("addNewEmployes", function () {
-				self.add();
+			// adding new employee to list
+			this.view.bind("addNewEmployes", () => {
+				this.add();
 			});
 
-			self.view.bind("clearInp", function () {
-				self.clearInp();
+			// clearing inputs
+			this.view.bind("clearInp", () => {
+				this.clearInp();
 			});
 
-			self.view.bind("removeAllEmpl", function () {
-				self.removeAllEmpl();
+			// delete all employee from local storage
+			this.view.bind("removeAllEmpl", () => {
+				this.removeAllEmpl();
+			});
+
+			// fire employee
+			this.view.bind("fireEmpl", (id) => {
+				this.fireEmpl(id);
 			});
 		}
 
-		add = function (data) {
-			self.model.create(data, function (data) {
-				self.view.show(data);
-				self.view.clearInputs();
+		add(data) {
+			this.model.create(data, (data) => {
+				this.view.show(data);
+				this.view.clearInputs();
 			});
-		};
+		}
 
-		showAll = function () {
-			self.model.findAll(function (data) {
-				if (!(data === [])) {
-					self.view.clearTemplate();
-				} else {
-					self.view.show(data);
-				}
+		showAll() {
+			this.model.findAll((data) => {
+				// add different template
+				// if (data !== []) {
+				// 	console.log(this.model.findAll());
+				// 	this.view.clearTemplate();
+				// } else {
+				// 	this.view.show(data);
+				// }
+
+				this.view.show(data);
 			});
-		};
+		}
 
-		clearInp = function () {
-			self.view.clearInputs();
-		};
+		clearInp() {
+			this.view.clearInputs();
+		}
 
-		removeAllEmpl = function () {
-			self.model.removeAllEmpl(function () {
-				self.view.clearTemplate();
-				console.log("controller");
+		removeAllEmpl() {
+			this.model.removeAllEmpl(() => {
+				this.view.clearTemplate();
 			});
-		};
+		}
+
+		fireEmpl(id) {
+			this.model.fireEmpl(id, (data) => {
+				this.view.addFireInf(data);
+			});
+		}
 	}
 
 	window.app = window.app || {};

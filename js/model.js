@@ -1,24 +1,26 @@
 (function (window) {
 	class model {
 		constructor(storage) {
-			self = this;
-			self.storage = storage;
+			this.storage = storage;
 		}
 
-		create = function (data, callback) {
+		create(data, callback) {
 			data = window.getData();
 
 			this.storage.save(data, callback);
-		};
+		}
 
-		findAll = function (callback) {
+		findAll(callback) {
 			this.storage.findAll(callback);
-		};
+		}
 
-		removeAllEmpl = function (callback) {
-			console.log("model");
+		removeAllEmpl(callback) {
 			this.storage.removeAll(callback);
-		};
+		}
+
+		fireEmpl(id, callback) {
+			this.storage.fire(id, callback);
+		}
 	}
 
 	window.app = window.app || {};

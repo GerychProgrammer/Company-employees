@@ -3,14 +3,14 @@
 		constructor(name) {
 			this.name = name;
 			if (!localStorage.getItem(name)) {
-				var empl = [];
+				let empl = [];
 
 				localStorage.setItem(name, JSON.stringify(empl));
 			}
 		}
 
-		save = function (data, callback) {
-			var empl = JSON.parse(localStorage.getItem(this.name));
+		save(data, callback) {
+			let empl = JSON.parse(localStorage.getItem(this.name));
 
 			callback = callback || function () {};
 
@@ -20,19 +20,53 @@
 			localStorage.setItem(this.name, JSON.stringify(empl));
 
 			callback(empl);
-		};
+		}
 
-		findAll = function (callback) {
-			callback = callback || function () {};
-			callback.call(this, JSON.parse(localStorage.getItem(this.name)));
-		};
+		find(query, callback) {
+			if (!callback) {
+				return;
+			}
 
-		removeAll = function (callback) {
+			let empl = JSON.parse(localStorage.getItem(this.name));
+
+			callback(
+				empl.filter(function (todo) {
+					for (let q in query) {
+						if (query[q] !== todo[q]) {
+							return false;
+						}
+					}
+					return true;
+				})
+			);
+		}
+
+		findAll(callback) {
 			callback = callback || function () {};
-			var empl = [];
+			callback(JSON.parse(localStorage.getItem(this.name)));
+		}
+
+		removeAll(callback) {
+			callback = callback || function () {};
+			let empl = [];
 			localStorage.setItem(this.name, JSON.stringify(empl));
 			callback();
-		};
+		}
+
+		fire(id, callback) {
+			let empl = JSON.parse(localStorage.getItem(this.name));
+			let fireDate = currentDate();
+			for (let i = 0; i < empl.length; i++) {
+				if (empl[i].id == id) {
+					empl[i].fireDate = fireDate;
+					empl[i].status = "fired";
+					break;
+				}
+			}
+
+			localStorage.setItem(this.name, JSON.stringify(empl));
+			callback({ id: id, fireDate: fireDate });
+		}
 	}
 
 	window.app = window.app || {};

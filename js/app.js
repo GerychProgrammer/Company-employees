@@ -9,10 +9,10 @@
 		}
 	}
 
-	var companyemployees = new companyEmployees("EmpList");
+	let companyemployees = new companyEmployees("EmpList");
 
 	function setView() {
 		companyemployees.controller.showAll();
 	}
-	$on(window, "load", setView);
+	addEvListener(window, "load", setView);
 })(window);
