@@ -12,7 +12,7 @@
                 </ol>
                 <div id="rightSection__joinAndLeave" class="rightSection__joinAndLeave">
                     <span><i class="fa-solid fa-check fa-lg"></i>Дата приема на работу: {{currentDate}}</span>
-                    <span class="rightSection__fireTime" style ="display: none"><i class="fa-solid fa-xmark fa-lg"></i></span>
+                    <span class="rightSection__fireTime" style ="display: none"><i class="fa-solid fa-xmark fa-lg"></i>{{fireTime}}</span>
                 </div>
             </div>  
             `;
@@ -38,6 +38,11 @@
 				tmpl = tmpl.replace("{{age}}", data[i].age);
 				tmpl = tmpl.replace("{{currentDate}}", data[i].confirmData);
 				tmpl = tmpl.replace("{{id}}", data[i].id);
+
+				if (data[i].fireDate && data[i].status) {
+					tmpl = tmpl.replace("{{fireTime}}", "Дата увольнения:" + data[i].fireDate);
+					tmpl = tmpl.replace(`style ="display: none"`, `style ="display: block"`);
+				}
 
 				view = view + tmpl;
 			}
