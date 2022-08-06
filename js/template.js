@@ -40,7 +40,7 @@
 				tmpl = tmpl.replace("{{id}}", data[i].id);
 
 				if (data[i].fireDate && data[i].status) {
-					tmpl = tmpl.replace("{{fireTime}}", "Дата увольнения:" + data[i].fireDate);
+					tmpl = tmpl.replace("{{fireTime}}", "Дата увольнения: " + data[i].fireDate);
 					tmpl = tmpl.replace(`style ="display: none"`, `style ="display: block"`);
 				}
 

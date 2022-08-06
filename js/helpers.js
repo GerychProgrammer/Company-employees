@@ -1,4 +1,20 @@
 (function (window) {
+	window.gElbyID = function (id) {
+		return document.getElementById(id);
+	};
+
+	window.qsa = function (selector, scope) {
+		return (scope || document).querySelectorAll(selector);
+	};
+
+	window.qs = function (selector, scope) {
+		return (scope || document).querySelector(selector);
+	};
+
+	window.addEvListener = function (element, type, callback) {
+		element.addEventListener(type, callback);
+	};
+
 	window.currentDate = function employeesDate() {
 		let employeesFullDate = new Date();
 		let employeesYear = employeesFullDate.getFullYear();
@@ -75,35 +91,6 @@
 		};
 
 		return dat;
-	};
-
-	window.gElbyID = function (id) {
-		return document.getElementById(id);
-	};
-
-	window.qsa = function (selector, scope) {
-		return (scope || document).querySelectorAll(selector);
-	};
-
-	window.qs = function (selector, scope) {
-		return (scope || document).querySelector(selector);
-	};
-
-	window.addEvListener = function (element, type, callback) {
-		element.addEventListener(type, callback);
-	};
-
-	window.$ppevent = function (target, selector, type, callback) {
-		function findElem(event) {
-			var targetElement = event.target.closest(selector);
-			var potentialElements = window.qsa(selector, target);
-			console.log("potentialElements", potentialElements);
-			hasIn = Array.prototype.indexOf.call(potentialElements, targetElement) >= 0;
-			if (hasIn) {
-				callback.call(targetElement, event);
-			}
-		}
-		window.$event(target, type, findElem);
 	};
 
 	window.delegate = function (target, selector, type, callback) {

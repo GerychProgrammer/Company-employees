@@ -30,9 +30,9 @@
 			let empl = JSON.parse(localStorage.getItem(this.name));
 
 			callback(
-				empl.filter(function (todo) {
+				empl.filter(function (employee) {
 					for (let q in query) {
-						if (query[q] !== todo[q]) {
+						if (query[q] !== employee[q]) {
 							return false;
 						}
 					}
