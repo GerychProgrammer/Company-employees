@@ -23,6 +23,11 @@
 			this.view.bind("fireEmpl", (id) => {
 				this.fireEmpl(id);
 			});
+
+			// filters and sort
+			// this.view.bind("filterAndSort", () => {
+			// 	this.filterAndSort();
+			// });
 		}
 
 		add(data) {
@@ -35,6 +40,7 @@
 		showAll() {
 			this.model.findAll((data) => {
 				// add different template
+
 				// if (data !== []) {
 				// 	console.log(this.model.findAll());
 				// 	this.view.clearTemplate();
@@ -61,6 +67,11 @@
 				this.view.addFireInf(data);
 			});
 		}
+
+		//filters
+		// filterAndSort() {
+
+		// }
 	}
 
 	window.app = window.app || {};

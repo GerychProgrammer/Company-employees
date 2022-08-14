@@ -62,7 +62,7 @@
 		}
 
 		getId(element) {
-			let parentEl = parent(element, "div");
+			let parentEl = getParent(element, "div");
 			return parseInt(parentEl.dataset.id, 10);
 		}
 

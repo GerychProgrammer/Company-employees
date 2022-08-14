@@ -15,7 +15,7 @@
 		element.addEventListener(type, callback);
 	};
 
-	window.currentDate = function employeesDate() {
+	window.currentDate = function () {
 		let employeesFullDate = new Date();
 		let employeesYear = employeesFullDate.getFullYear();
 		let employeesMoth = employeesFullDate.getMonth();
@@ -93,6 +93,23 @@
 		return dat;
 	};
 
+	window.getDataFromFiltersAndSort = function () {
+		let show = gElbyID("show").value;
+		let age = gElbyID("age").value;
+		let highEducation = gElbyID("highEducation").value;
+		let sex = gElbyID("sex").value;
+		let sort = gElbyID("sort").value;
+
+		let data = {
+			show: show,
+			age: age,
+			highEducation: highEducation,
+			sex: sex,
+		};
+
+		return data;
+	};
+
 	window.delegate = function (target, selector, type, callback) {
 		target.addEventListener(type, (event) => {
 			const targetElement = event.target.closest(selector);
@@ -105,13 +122,13 @@
 		});
 	};
 
-	window.parent = function (element, tagName) {
+	window.getParent = function (element, tagName) {
 		if (!element.parentNode) {
 			return;
 		}
 		if (element.parentNode.tagName.toLowerCase() === tagName.toLowerCase()) {
 			return element.parentNode;
 		}
-		return window.parent(element.parentNode, tagName);
+		return window.getParent(element.parentNode, tagName);
 	};
 })(window);
