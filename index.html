@@ -25,19 +25,18 @@
     
                 <div class="inputs__sex">
                     <span>Пол:</span>
-                    <span>мужской<input id="inputs__male" type="radio" name="sex" class="inputs__male"></span>
-                    <span>женский<input id="inputs__female" type="radio" name="sex" class="inputs__female"></span>    
+                    <span>мужской<input id="inputs__male" type="radio" name="sex" class="inputs__male" value="man"></span>
+                    <span>женский<input id="inputs__female" type="radio" name="sex" class="inputs__female" value="woman"></span>    
                 </div>
 
                 <span class="inputs__spanAvailabilityHE">Наличие высшего образования <input id="inputs__spanAvailabilityHE" type="checkbox" name="higher_education"></span>
                
                 <div class="inputs__Btns">
                     <input id="confirm" class="inputs__submit" value="Добавить" type="submit">
-                    <button id="clear" class="inputs__resetBtn" name="clear">Сбросить</button>
-                    <button id="deleteAll" class="inputs__clearBtn" name="delete">Удалить всех работников</button>
-                </div>
-        
+                    <input id="clear" class="inputs__reset" value="Сбросить" type="reset">
+                </div>        
             </form>
+            <button id="deleteAll" class="inputs__deleteBtn">Удалить всех работников</button>            
         </div>          
 
         <div class="filterAndSort">

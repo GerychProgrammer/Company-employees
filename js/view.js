@@ -15,7 +15,7 @@
 			}
 
 			if (type === "clearInp") {
-				addEvListener(this.clearBnt, "click", callback);
+				addEvListener(this.clearBnt, "reset", callback);
 			}
 
 			if (type === "removeAllEmpl") {

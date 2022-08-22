@@ -77,27 +77,32 @@ body {
     justify-content: space-evenly;    
 }
 
-.inputs__Btns button{
+.inputs__Btns input{
     background: none;
     border: 2px solid #CC6600;
     padding: 5px 10px;
+    margin-top: 10px;
 }
 
-.inputs__submit {
+.inputs__deleteBtn {
     background: none;
     border: 2px solid #CC6600;
     padding: 5px 10px;
+    margin: 10px 0 0 75px;
+    width: 242px;
 }
 
-.inputs__submit:hover {
+.inputs__Btns input:hover {
     background-color: #CC6600;
     transition: 0.3s;
 }
 
-.inputs__Btns button:hover {
+.inputs__deleteBtn:hover {
     background-color: #CC6600;
     transition: 0.3s;
 }
+
+
 /* left section__inputs ends */
 
 
