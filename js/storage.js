@@ -1,5 +1,5 @@
 (function (window) {
-	class storage {
+	class Storage {
 		constructor(name) {
 			this.name = name;
 			if (!localStorage.getItem(name)) {
@@ -53,22 +53,20 @@
 			callback();
 		}
 
-		fire(id, callback) {
+		update(updateData, id, callback) {
 			let empl = JSON.parse(localStorage.getItem(this.name));
-			let fireDate = currentDate();
 			for (let i = 0; i < empl.length; i++) {
 				if (empl[i].id == id) {
-					empl[i].fireDate = fireDate;
-					empl[i].status = "fired";
+					empl[i] = Object.assign(empl[i], updateData);
 					break;
 				}
 			}
 
 			localStorage.setItem(this.name, JSON.stringify(empl));
-			callback({ id: id, fireDate: fireDate });
+			callback(updateData);
 		}
 	}
 
 	window.app = window.app || {};
-	window.app.storage = storage;
+	window.app.Storage = Storage;
 })(window);

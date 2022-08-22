@@ -14,7 +14,8 @@
     <div class="leftSection">        
         <div class="inputs">
             <h1>Company name</h1>
-            <h2 class="inputs__heading">Введите данные</h2>
+            <form id="inputs__form">
+                <h2 class="inputs__heading">Введите данные</h2>
                 <div class="inputs__empoyeesInf">
                     <span>Введите фамилию:<input id="inputs__spanSurname" type="text" placeholder="Фамилия" class="inputs__spanSurname" name="surname" autocomplete="off"></span>
                     <span>Введите имя:<input id="inputs__spanName" type="text" placeholder="Имя" class="inputs__spanName" name="name" autocomplete="off"></span>
@@ -24,18 +25,20 @@
     
                 <div class="inputs__sex">
                     <span>Пол:</span>
-                    <span>мужской<input id="inputs__male" type="radio" name="sex" class="inputs__male" name="sexMale"></span>
-                    <span>женский<input id="inputs__female" type="radio" name="sex" class="inputs__female" name="sexFemale"></span>    
+                    <span>мужской<input id="inputs__male" type="radio" name="sex" class="inputs__male"></span>
+                    <span>женский<input id="inputs__female" type="radio" name="sex" class="inputs__female"></span>    
                 </div>
 
-                <span class="inputs__spanAvailabilityHE">Наличие высшего образования <input id="inputs__spanAvailabilityHE" type="checkbox" name="highEducation"></span>
+                <span class="inputs__spanAvailabilityHE">Наличие высшего образования <input id="inputs__spanAvailabilityHE" type="checkbox" name="higher_education"></span>
                
                 <div class="inputs__Btns">
-                    <button id="confirm" class="inputs__confirmBtn inputs__confirmBtn_marginRight" name="confirm">Добавить</button>
-                    <button id="reset" class="inputs__resetBtn" name="reset">Сбросить</button>
-                    <button id="clearAll" class="inputs__clearBtn" name="clear">Удалить всех работников</button>
+                    <input id="confirm" class="inputs__submit" value="Добавить" type="submit">
+                    <button id="clear" class="inputs__resetBtn" name="clear">Сбросить</button>
+                    <button id="deleteAll" class="inputs__clearBtn" name="delete">Удалить всех работников</button>
                 </div>
-        </div>        
+        
+            </form>
+        </div>          
 
         <div class="filterAndSort">
             <div class="filterAndSort__filters">
@@ -90,7 +93,7 @@
                 </select>
             </div>
             <div class="filterAndSort__btns">
-                <button class="filterAndSort__submit">Подтвердить</button>
+                <button class="filterAndSort__submit">Применить</button>
                 <button class="filterAndSort__reset">Сбросить</button>
             </div>            
         </div>

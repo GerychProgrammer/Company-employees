@@ -1,38 +1,25 @@
 (function (window) {
-	class view {
+	class View {
 		constructor(template) {
 			this.template = template;
 
-			this.inpName = gElbyID("inputs__spanName");
-			this.inpSurname = gElbyID("inputs__spanSurname");
-			this.inpPatronymic = gElbyID("inputs__spanPatronymic");
-			this.inpAge = gElbyID("inputs__spanAge");
-			this.inpSexMale = gElbyID("inputs__male");
-			this.inpSexFemale = gElbyID("inputs__female");
-			this.inpHe = gElbyID("inputs__spanAvailabilityHE");
 			this.list = gElbyID("rightSection");
+			this.form = gElbyID("inputs__form");
+			this.clearBnt = gElbyID("clear");
+			this.deleteAll = gElbyID("deleteAll");
 		}
 
 		bind(type, callback) {
 			if (type === "addNewEmployes") {
-				let el = gElbyID("confirm");
-				addEvListener(el, "click", function () {
-					callback();
-				});
+				addEvListener(this.form, "submit", callback);
 			}
 
 			if (type === "clearInp") {
-				let el = gElbyID("reset");
-				addEvListener(el, "click", function () {
-					callback();
-				});
+				addEvListener(this.clearBnt, "click", callback);
 			}
 
 			if (type === "removeAllEmpl") {
-				let el = gElbyID("clearAll");
-				addEvListener(el, "click", function () {
-					callback();
-				});
+				addEvListener(this.deleteAll, "click", callback)
 			}
 
 			if (type === "fireEmpl") {
@@ -47,18 +34,12 @@
 			this.list.innerHTML = this.template.showDefaultTemplate(data);
 		}
 
-		clearTemplate() {
-			this.list.innerHTML = this.template.showClearTemplate();
+		clearTemplate(data) {
+			this.list.innerHTML = this.template.showClearTemplate(data);
 		}
 
 		clearInputs() {
-			this.inpName.value = "";
-			this.inpSurname.value = "";
-			this.inpPatronymic.value = "";
-			this.inpAge.value = "";
-			this.inpSexMale.checked = false;
-			this.inpSexFemale.checked = false;
-			this.inpHe.checked = false;
+			this.form.reset();
 		}
 
 		getId(element) {
@@ -66,9 +47,9 @@
 			return parseInt(parentEl.dataset.id, 10);
 		}
 
-		addFireInf(data) {
-			let parentId = data.id;
-			let date = data.fireDate;
+		addFireInf(updateData) {
+			let parentId = updateData.id;
+			let date = updateData.fireDate;
 			let elem = qs('[data-id="' + parentId + '"]');
 			let elemForTime = qs(".rightSection__fireTime", elem);
 
@@ -78,5 +59,5 @@
 	}
 
 	window.app = window.app || {};
-	window.app.view = view;
+	window.app.View = View;
 })(window);

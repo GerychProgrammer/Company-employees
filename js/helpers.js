@@ -13,10 +13,11 @@
 
 	window.addEvListener = function (element, type, callback) {
 		element.addEventListener(type, callback);
+		return
 	};
 
-	window.currentDate = function () {
-		let employeesFullDate = new Date();
+	window.formatDate = function (date) {
+		let employeesFullDate = date;
 		let employeesYear = employeesFullDate.getFullYear();
 		let employeesMoth = employeesFullDate.getMonth();
 		let employeesDay = employeesFullDate.getDate();
@@ -25,23 +26,23 @@
 		let employeesSec = employeesFullDate.getSeconds();
 
 		if (employeesMoth < 10) {
-			employeesMoth = "0" + employeesMoth;
+			employeesMoth = String(employeesMoth).padStart(2, "0"); 
 		}
 
 		if (employeesDay < 10) {
-			employeesDay = "0" + employeesDay;
+			employeesDay = String(employeesDay).padStart(2, "0");
 		}
 
 		if (employeesHour < 10) {
-			employeesHour = "0" + employeesHour;
+			employeesHour = String(employeesHour).padStart(2, "0"); 
 		}
 
 		if (employeesMins < 10) {
-			employeesMins = "0" + employeesMins;
+			employeesMins = String(employeesMins).padStart(2, "0"); 
 		}
 
 		if (employeesSec < 10) {
-			employeesSec = "0" + employeesSec;
+			employeesSec = String(employeesSec).padStart(2, "0");
 		}
 
 		return (
@@ -59,54 +60,13 @@
 		);
 	};
 
-	window.getData = function () {
-		const employeesName = document.getElementById("inputs__spanName").value;
-		const employeesSurname = document.getElementById("inputs__spanSurname").value;
-		const employeesPatronymic = document.getElementById("inputs__spanPatronymic").value;
-		const employeesAge = document.getElementById("inputs__spanAge").value;
-		const employeesSexMale = document.getElementById("inputs__male");
-		const employeesHE = document.getElementById("inputs__spanAvailabilityHE");
-		let sex, he;
+	window.getDataFromForm = function (event) {
+		let formData = new FormData(event.target);
 
-		if (employeesSexMale.checked) {
-			sex = "мужcкой";
-		} else {
-			sex = "женский";
+		const data = {};
+		for (let key of formData.keys()) {
+			data[key] = formData.get(key);
 		}
-
-		if (employeesHE.checked) {
-			he = "имеется";
-		} else {
-			he = "не имеется";
-		}
-
-		let dat = {
-			name: employeesName,
-			surname: employeesSurname,
-			patronymic: employeesPatronymic,
-			age: employeesAge,
-			sex: sex,
-			higher_education: he,
-			confirmData: currentDate(),
-		};
-
-		return dat;
-	};
-
-	window.getDataFromFiltersAndSort = function () {
-		let show = gElbyID("show").value;
-		let age = gElbyID("age").value;
-		let highEducation = gElbyID("highEducation").value;
-		let sex = gElbyID("sex").value;
-		let sort = gElbyID("sort").value;
-
-		let data = {
-			show: show,
-			age: age,
-			highEducation: highEducation,
-			sex: sex,
-		};
-
 		return data;
 	};
 

@@ -83,6 +83,17 @@ body {
     padding: 5px 10px;
 }
 
+.inputs__submit {
+    background: none;
+    border: 2px solid #CC6600;
+    padding: 5px 10px;
+}
+
+.inputs__submit:hover {
+    background-color: #CC6600;
+    transition: 0.3s;
+}
+
 .inputs__Btns button:hover {
     background-color: #CC6600;
     transition: 0.3s;

@@ -1,18 +1,18 @@
 (function (window) {
-	class companyEmployees {
+	class CompanyEmployees {
 		constructor(name) {
-			this.storage = new app.storage(name);
-			this.template = new app.template();
-			this.view = new app.view(this.template);
-			this.model = new app.model(this.storage);
-			this.controller = new app.controller(this.model, this.view);
+			this.storage = new app.Storage(name);
+			this.template = new app.Template();
+			this.view = new app.View(this.template);
+			this.model = new app.Model(this.storage);
+			this.controller = new app.Controller(this.model, this.view);
 		}
 	}
 
-	let companyemployees = new companyEmployees("EmpList");
+	let companyEmployees = new CompanyEmployees("EmpList");
 
 	function setView() {
-		companyemployees.controller.showAll();
+		companyEmployees.controller.showAll();
 	}
 	addEvListener(window, "load", setView);
 })(window);
