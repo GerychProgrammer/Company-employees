@@ -22,6 +22,10 @@
 				this.fireEmpl(id);
 			});
 
+			//this.view.bind("fireEmpl", this.updateCount());
+
+			
+
 			// filters and sort
 			// this.view.bind("filterAndSort", () => {
 			// 	this.filterAndSort();
@@ -30,13 +34,14 @@
 
 		add(event) {
 			event.preventDefault();
-			
+
 			let data = window.getDataFromForm(event);
 
 			this.model.create(data, (data) => {
-				this.view.show(data);				
+				this.view.show(data);
 				this.view.clearInputs();
 			});
+			this.updateCount();
 		}
 
 		showAll() {
@@ -46,8 +51,9 @@
 					this.view.show(data);
 				} else {
 					this.view.clearTemplate(data);
-				}
+				}				
 			});
+			this.updateCount();
 		}
 
 		clearInp() {
@@ -58,6 +64,7 @@
 			this.model.removeAllEmpl(() => {
 				this.view.clearTemplate();
 			});
+			this.updateCount();
 		}
 
 		fireEmpl(id) {
@@ -70,6 +77,12 @@
 		// filterAndSort() {
 
 		// }
+
+		updateCount() {
+			this.model.getCount((employees) => {
+				this.view.renderCount(employees.working);
+			});
+		}
 	}
 
 	window.app = window.app || {};

@@ -12,9 +12,10 @@
 				sex: data.sex,
 				higher_education: data.higher_education,
 				age: data.age,
-				confirmDate: new Date()				
-			}
-			
+				confirmDate: new Date(),
+				status: "working"
+			};
+
 			this.storage.save(data, callback);
 		}
 
@@ -32,12 +33,30 @@
 
 		fireEmpl(id, callback) {
 			let updateData = {
-				id : id,
-				fireDate : new Date(),
-				status : "fired"
-			}
+				id: id,
+				fireDate: new Date(),
+				status: "fired",
+			};
 
 			this.storage.update(updateData, id, callback);
+		}
+
+		getCount(callback) {
+			let employees = {
+				working: 0,
+				fired: 0,
+			};
+
+			this.storage.findAll((data) => {
+				data.forEach(function (employee) {
+					if (employee.status == "working") {
+						employees.working++;
+					} else {
+						employees.fired++;
+					}
+				});
+				callback(employees);
+			});
 		}
 	}
 

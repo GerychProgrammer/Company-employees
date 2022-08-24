@@ -7,6 +7,7 @@
 			this.form = gElbyID("inputs__form");
 			this.clearBnt = gElbyID("clear");
 			this.deleteAll = gElbyID("deleteAll");
+			this.counter = gElbyID("employeesCount__counter");
 		}
 
 		bind(type, callback) {
@@ -19,7 +20,7 @@
 			}
 
 			if (type === "removeAllEmpl") {
-				addEvListener(this.deleteAll, "click", callback)
+				addEvListener(this.deleteAll, "click", callback);
 			}
 
 			if (type === "fireEmpl") {
@@ -27,6 +28,10 @@
 				delegate(self.list, "#rightSection__employeeDel", "click", function () {
 					callback(self.getId(this));
 				});
+			}
+
+			if (type === "updateCount") {
+				this.renderCount();
 			}
 		}
 
@@ -55,6 +60,10 @@
 
 			elemForTime.style.display = "block";
 			elemForTime.innerHTML = this.template.fireEmpl(date);
+		}
+
+		renderCount(count) {
+			this.counter.innerHTML = this.template.showCount(count);
 		}
 	}
 

@@ -162,6 +162,22 @@ body {
 }
 /* left section__filterAndSort ends */
 
+/* left section employees counter starts*/
+.employeesCount {
+    display: flex;
+    justify-content: center;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+    padding: 5px;
+}
+
+.employeesCount__counter {
+    font-size: 20px;
+    color: #CC6600;
+}
+/* left section employees counter ends*/
+
 
 /* right section */
 .rightSection {
