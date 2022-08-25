@@ -40,8 +40,8 @@
 			this.model.create(data, (data) => {
 				this.view.show(data);
 				this.view.clearInputs();
-			});
-			this.updateCount();
+				this.updateCount();
+			});			
 		}
 
 		showAll() {
@@ -63,13 +63,15 @@
 		removeAllEmpl() {
 			this.model.removeAllEmpl(() => {
 				this.view.clearTemplate();
+				this.updateCount();
 			});
-			this.updateCount();
+			
 		}
 
 		fireEmpl(id) {
 			this.model.fireEmpl(id, (data) => {
 				this.view.addFireInf(data);
+				this.updateCount();
 			});
 		}
 
