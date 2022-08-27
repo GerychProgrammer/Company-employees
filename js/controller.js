@@ -22,26 +22,25 @@
 				this.fireEmpl(id);
 			});
 
-			//this.view.bind("fireEmpl", this.updateCount());
-
-			
-
 			// filters and sort
-			// this.view.bind("filterAndSort", () => {
-			// 	this.filterAndSort();
-			// });
+			this.view.bind("filterAndSort", this.filterAndSort.bind(this));
+
+			this.view.bind("defaultFiltersAndSort", this.defaultFiltersAndSort());
 		}
 
 		add(event) {
 			event.preventDefault();
 
 			let data = window.getDataFromForm(event);
-
-			this.model.create(data, (data) => {
-				this.view.show(data);
-				this.view.clearInputs();
-				this.updateCount();
-			});			
+			if (this.model.isValid(data)) {
+				this.model.create(data, (data) => {
+					this.view.show(data);
+					this.view.clearInputs();
+					this.updateCount();
+				});
+			} else {
+				this.clearInp();
+			}
 		}
 
 		showAll() {
@@ -51,7 +50,7 @@
 					this.view.show(data);
 				} else {
 					this.view.clearTemplate(data);
-				}				
+				}
 			});
 			this.updateCount();
 		}
@@ -65,7 +64,6 @@
 				this.view.clearTemplate();
 				this.updateCount();
 			});
-			
 		}
 
 		fireEmpl(id) {
@@ -75,15 +73,38 @@
 			});
 		}
 
-		//filters
-		// filterAndSort() {
+		filterAndSort(event) {
+			event.preventDefault();
 
-		// }
+			let { sorting, ...filters } = window.getDataFromForm(event);
+
+			this.model.find(sorting, filters, (data) => {
+				this.view.show(data);
+			});
+		}
+
+		defaultFiltersAndSort() {
+			this.view.setDefaultFiltersAndSort();
+		}
 
 		updateCount() {
 			this.model.getCount((employees) => {
 				this.view.renderCount(employees.working);
 			});
+		}
+
+		addTestData(testData) {
+			let data = testData;
+
+			if (this.model.isValid(data)) {
+				this.model.create(data, (data) => {
+					this.view.show(data);
+					this.view.clearInputs();
+					this.updateCount();
+				});
+			} else {
+				this.clearInp();
+			}
 		}
 	}
 

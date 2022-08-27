@@ -4,15 +4,17 @@
 			this.template = template;
 
 			this.list = gElbyID("rightSection");
-			this.form = gElbyID("inputs__form");
+			this.inputsForm = gElbyID("inputs__form");
+			this.filtersAndSortForm = gElbyID("filterAndSort__form");
 			this.clearBnt = gElbyID("clear");
 			this.deleteAll = gElbyID("deleteAll");
 			this.counter = gElbyID("employeesCount__counter");
+			this.resetFilters = gElbyID("filterAndSort__reset");
 		}
 
 		bind(type, callback) {
 			if (type === "addNewEmployes") {
-				addEvListener(this.form, "submit", callback);
+				addEvListener(this.inputsForm, "submit", callback);
 			}
 
 			if (type === "clearInp") {
@@ -30,8 +32,12 @@
 				});
 			}
 
-			if (type === "updateCount") {
-				this.renderCount();
+			if (type === "filterAndSort") {
+				addEvListener(this.filtersAndSortForm, "submit", callback);
+			}
+
+			if (type === "defaultFiltersAndSort") {
+				addEvListener(this.resetFilters, "reset", callback);
 			}
 		}
 
@@ -44,7 +50,7 @@
 		}
 
 		clearInputs() {
-			this.form.reset();
+			this.inputsForm.reset();
 		}
 
 		getId(element) {
@@ -64,6 +70,10 @@
 
 		renderCount(count) {
 			this.counter.innerHTML = this.template.showCount(count);
+		}
+
+		setDefaultFiltersAndSort() {
+			this.filtersAndSortForm.reset();
 		}
 	}
 

@@ -13,7 +13,7 @@
 
 	window.addEvListener = function (element, type, callback) {
 		element.addEventListener(type, callback);
-		return
+		return;
 	};
 
 	window.formatDate = function (date) {
@@ -26,7 +26,7 @@
 		let employeesSec = employeesFullDate.getSeconds();
 
 		if (employeesMoth < 10) {
-			employeesMoth = String(employeesMoth).padStart(2, "0"); 
+			employeesMoth = String(employeesMoth).padStart(2, "0");
 		}
 
 		if (employeesDay < 10) {
@@ -34,11 +34,11 @@
 		}
 
 		if (employeesHour < 10) {
-			employeesHour = String(employeesHour).padStart(2, "0"); 
+			employeesHour = String(employeesHour).padStart(2, "0");
 		}
 
 		if (employeesMins < 10) {
-			employeesMins = String(employeesMins).padStart(2, "0"); 
+			employeesMins = String(employeesMins).padStart(2, "0");
 		}
 
 		if (employeesSec < 10) {
@@ -58,6 +58,14 @@
 			":" +
 			employeesSec
 		);
+	};
+
+	window.calculateAge = function (birth) {
+		var pattern = /(\d{2})\.(\d{2})\.(\d{4})/;
+		var birthday = new Date(birth.replace(pattern, "$3-$2-$1"));
+		var ageDifMs = Date.now() - birthday.getTime();
+		var ageDate = new Date(ageDifMs);
+		return Math.abs(ageDate.getUTCFullYear() - 1970);
 	};
 
 	window.getDataFromForm = function (event) {

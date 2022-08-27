@@ -22,23 +22,31 @@
 			callback(empl);
 		}
 
-		find(query, callback) {
-			if (!callback) {
-				return;
-			}
-
+		find(sorting, filters, callback) {
 			let empl = JSON.parse(localStorage.getItem(this.name));
 
-			callback(
-				empl.filter(function (employee) {
-					for (let q in query) {
-						if (query[q] !== employee[q]) {
-							return false;
+			if (filters) {
+				empl = empl.filter(function (item) {
+					let _return = true;
+
+					for (let key in filters) {
+						let value = filters[key];
+
+						if (typeof value === "function") {
+							_return = _return && value(item[key]);
+						} else {
+							_return = _return && item[key] === filters[key];
 						}
 					}
-					return true;
-				})
-			);
+					return _return;
+				});
+			}
+
+			if (sorting) {
+				empl = empl.sort(sorting);
+			}
+
+			callback(empl);
 		}
 
 		findAll(callback) {

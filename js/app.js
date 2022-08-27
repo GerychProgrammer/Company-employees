@@ -6,6 +6,7 @@
 			this.view = new app.View(this.template);
 			this.model = new app.Model(this.storage);
 			this.controller = new app.Controller(this.model, this.view);
+			this.testData = new app.TestData(this.controller);
 		}
 	}
 
@@ -14,5 +15,10 @@
 	function setView() {
 		companyEmployees.controller.showAll();
 	}
+
+	window.createTestData = function (value) {
+		companyEmployees.testData.createTestData(value);
+	};
+
 	addEvListener(window, "load", setView);
 })(window);

@@ -51,7 +51,7 @@
 
 		showDefaultTemplate(data) {
 			let view = "";
-			
+
 			for (let i = 0; i < data.length; i++) {
 				let tmpl = this.defaultTemplate(data[i]);
 
@@ -59,8 +59,8 @@
 				tmpl = tmpl.replace("{{name}}", data[i].name);
 				tmpl = tmpl.replace("{{patronymic}}", data[i].patronymic);
 				tmpl = tmpl.replace("{{sex}}", data[i].sex == "man" ? "мужской" : "женский");
-				tmpl = tmpl.replace("{{he}}", data[i].higher_education == "on" ? "имеется" : "не имеется");
-				tmpl = tmpl.replace("{{age}}", data[i].age);
+				tmpl = tmpl.replace("{{he}}", data[i].higher_education == "yes" ? "имеется" : "не имеется");
+				tmpl = tmpl.replace("{{age}}", `${data[i].age ? `${data[i].age} лет` : "возраст не указан"}`);
 				tmpl = tmpl.replace("{{currentDate}}", this.formatCurrentDate(data[i].confirmDate));
 				tmpl = tmpl.replace("{{id}}", data[i].id);
 

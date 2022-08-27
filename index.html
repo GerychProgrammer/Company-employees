@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Company</title>
+    <title>Компания</title>
     <link rel="shortcut icon" href="../img/enterprise.png">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/styles.css">
@@ -13,7 +13,7 @@
 <body>   
     <div class="leftSection">        
         <div class="inputs">
-            <h1>Company name</h1>
+            <h1>Компания</h1>
             <form id="inputs__form">
                 <h2 class="inputs__heading">Введите данные</h2>
                 <div class="inputs__empoyeesInf">
@@ -40,63 +40,72 @@
         </div>          
 
         <div class="filterAndSort">
-            <div class="filterAndSort__filters">
-                <h2 class="filterAndSort__heading">Фильтрация</h2>
-                <div class="filterAndSort__someFilter">
-                    <span class = "filterAndSort__span">Показать</span>
-                    <select name="show" id="show">
-                        <option value="Всех">Всех</option>
-                        <option value="Работающих в данный момент">Работающих в данный момент</option>
-                        <option value="Уволенных">Уволенных</option>
-                    </select>
+            <form id="filterAndSort__form">
+                <div class="filterAndSort__filters">
+                    <h2 class="filterAndSort__heading">Фильтрация</h2>
+                    <div class="filterAndSort__someFilter">
+                        <span class = "filterAndSort__span">Показать</span>
+                        <select name="status" id="status">
+                            <option value="all">Всех</option>
+                            <option value="working">Работающих в данный момент</option>
+                            <option value="fired">Уволенных</option>
+                        </select>
+                    </div>
+    
+                    <div class="filterAndSort__someFilter">
+                        <span class = "filterAndSort__span">Возраст</span>
+                        <select name="age" id="age">
+                            <option value="all">Все возраста</option>
+                            <option value="to_25">До 25</option>
+                            <option value="from_25_to_45">От 25 до 45</option>
+                            <option value="from_45">От 45</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filterAndSort__someFilter">
+                        <span class = "filterAndSort__span">Наличие высшего образования</span>
+                        <select name="higher_education" id="higher_education">
+                            <option value="all">Не имеет значения</option>
+                            <option value="yes">Есть</option>
+                            <option value="no">Нет</option>
+                        </select>
+                    </div>
+    
+                    <div class="filterAndSort__someFilter">
+                        <span class = "filterAndSort__span">Пол</span>
+                        <select name="sex" id="sex">
+                            <option value="all">Любой</option>
+                            <option value="man">Мужской</option>
+                            <option value="woman">Женский</option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="filterAndSort__someFilter">
-                    <span class = "filterAndSort__span">Возраст</span>
-                    <select name="age" id="age">
-                        <option value="Все возрасты">Все возраста</option>
-                        <option value="До 25">До 25</option>
-                        <option value="От 25 до 45">От 25 до 45</option>
-                        <option value="От 45">От 45</option>
-                    </select>
-                </div>
-                
-                <div class="filterAndSort__someFilter">
-                    <span class = "filterAndSort__span">Наличие высшего образования</span>
-                    <select name="highEducation" id="highEducation">
-                        <option value="Не имеет значения">Не имеет значения</option>
-                        <option value="Есть">Есть</option>
-                        <option value="Нет">Нет</option>
-                    </select>
-                </div>
+                <div class="filterAndSort__sort">
+                    <h2 class="filterAndSort__heading">Сортировка</h2>
+                    <span class="filterAndSort__span">Отсортировать</span>
+                    <select name="sorting" id="sort">
+                        <option value="byFullName">От А до Я</option>
+                        <option value="byFullName DESC">От Я до А</option>
 
-                <div class="filterAndSort__someFilter">
-                    <span class = "filterAndSort__span">Пол</span>
-                    <select name="sex" id="sex">
-                        <option value="Любой">Любой</option>
-                        <option value="Мужской">Мужской</option>
-                        <option value="Женский">Женский</option>
+                        <option value="byAge">По возрастанию возраста</option>
+                        <option value="byAge DESC">По убыванию возраста</option>
+
+                        <option value="byTimeCreated">По возрастанию даты приема на работу</option>
+                        <option value="byTimeCreated DESC">По убыванию даты приема на работу</option>
+
+                        <option value="byTimeDeleted">По возрастанию даты увольнения</option>
+                        <option value="byTimeDeleted DESC">По убыванию даты увольнения</option>
                     </select>
                 </div>
-            </div>
-            <div class="filterAndSort__sort">
-                <h2 class="filterAndSort__heading">Сортировка</h2>
-                <span class="filterAndSort__span">Отсортировать</span>
-                <select name="sort" id="sort">
-                    <option value="От А до Я">От А до Я</option>
-                    <option value="От Я до А">От Я до А</option>
-                    <option value="По возрастанию даты приема на работу">По возрастанию даты приема на работу</option>
-                    <option value="По убыванию даты приема на работу">По убыванию даты приема на работу</option>
-                    <option value="По возрастанию даты увольнения">По возрастанию даты увольнения</option>
-                    <option value="По убыванию даты увольнения">По убыванию даты увольнения</option>
-                </select>
-            </div>
-            <div class="filterAndSort__btns">
-                <button class="filterAndSort__submit">Применить</button>
-                <button class="filterAndSort__reset">Сбросить</button>
-            </div>            
+                <div class="filterAndSort__btns">
+                    <input type="submit" id="filterAndSort__submit" class="filterAndSort__submit" value="Применить">
+                    <input type="reset" id="filterAndSort__reset" class="filterAndSort__reset" value="Сбросить">
+                </div>            
+            </form>
+            
         </div>
-        
+
         <div class="employeesCount">
             <span id="employeesCount__counter" class="employeesCount__counter"></span>
         </div>
@@ -123,6 +132,9 @@
     </div>    
 </body>
 <script src="./js/helpers.js"></script>
+<script src="./js/filters.js"></script>
+<script src="./js/sorters.js"></script>
+<script src="./js/testData.js"></script>
 <script src="./js/storage.js"></script>
 <script src="./js/template.js"></script>
 <script src="./js/view.js"></script>
